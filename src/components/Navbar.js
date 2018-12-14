@@ -1,79 +1,41 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+import styled from 'styled-components'
+import UIkit from 'uikit'
+import Icons from 'uikit/dist/js/uikit-icons'
+UIkit.use(Icons);
+
+const Header = styled.header`
+  height: 150px;
+`
+
+const Title = styled.h1`
+  font-size: 1.7rem;
+  color: #56AFE2;
+`
 
 const Navbar = class extends React.Component {
-
-  componentDidMount() {
-    // Get all "navbar-burger" elements
-   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-    // Check if there are any navbar burgers
-   if ($navbarBurgers.length > 0) {
- 
-     // Add a click event on each of them
-     $navbarBurgers.forEach( el => {
-       el.addEventListener('click', () => {
- 
-         // Get the target from the "data-target" attribute
-         const target = el.dataset.target;
-         const $target = document.getElementById(target);
- 
-         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-         el.classList.toggle('is-active');
-         $target.classList.toggle('is-active');
- 
-       });
-     });
-   }
- }
- 
- render() {
-   return (
-  
-  <nav className="navbar is-transparent" role="navigation" aria-label="main-navigation">
-    <div className="container">
-      <div className="navbar-brand">
-        <Link to="/" className="navbar-item" title="Logo">
-          <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-        </Link>
-        {/* Hamburger menu */}
-        <div className="navbar-burger burger" data-target="navMenu">
-          <span></span>
-          <span></span>
-          <span></span>
+  render() {
+    return (
+      <Header className="uk-container uk-padding">
+        <Title className="uk-text-center"><Link to="/">不定期更新症候群</Link></Title>
+        <div className="uk-text-center" uk-margin="true">
+          <Link to="/" uk-icon="icon: github" className="uk-margin-small-left uk-margin-small-right"></Link>
+          <Link to="/" uk-icon="icon: twitter"></Link>
         </div>
-      </div>
-      <div id="navMenu" className="navbar-menu">
-      <div className="navbar-start has-text-centered">
-        <Link className="navbar-item" to="/about">
-          About
-        </Link>
-        <Link className="navbar-item" to="/products">
-          Products
-        </Link>
-        <Link className="navbar-item" to="/contact">
-          Contact
-        </Link>
-        <Link className="navbar-item" to="/contact/examples">
-          Form Examples
-        </Link>
-      </div>
-      <div className="navbar-end has-text-centered">
-        <a
-          className="navbar-item"
-          href="https://github.com/AustinGreen/gatsby-netlify-cms-boilerplate"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="icon">
-            <img src={github} alt="Github" />
-          </span>
-        </a>
-      </div>
-      </div>
-    </div>
-  </nav>
+        <nav className="uk-navbar-container uk-navbar-transparent" uk-navbar="true">
+            <div className="uk-navbar-center">
+                <ul className="uk-navbar-nav">
+                    <li><Link to="/" >Home</Link></li>
+                    <li><Link to="/" className="">TECH LOG</Link></li>
+                    <li><Link to="/" className="">BOOKS</Link></li>
+                    <li><Link to="/" className="">OTHERS</Link></li>
+                    <li><Link to="/" className="">ARCHIVES</Link></li>
+                    <li><Link to="/" className="">ABOUT</Link></li>
+                </ul>
+            </div>
+        </nav>
+      </Header>
   )}
 }
 
