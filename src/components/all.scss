@@ -1,4 +1,5 @@
 $global-link-color: #DA7D02;
+$main-color: #01579b;
 
 // 2. Import default variables and available mixins.
 @import "uikit/src/scss/variables-theme.scss";
@@ -6,7 +7,16 @@ $global-link-color: #DA7D02;
 
 // 3. Your custom mixin overwrites.
 @mixin hook-card() { color: #000; }
+@mixin uk-label() { 
+  background-color: #01579b;
+  
+}
 
 // 4. Import UIkit.
 @import "uikit/src/scss/uikit-theme.scss";
-// @import 'uikit/src/scss/uikit.scss';
+
+a {
+  &:hover {
+    text-decoration: none;    
+  }    
+}

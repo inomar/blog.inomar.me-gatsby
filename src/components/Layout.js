@@ -4,7 +4,8 @@ import 'ress';
 import { StaticQuery, graphql } from "gatsby"
 
 import Navbar from '../components/Navbar'
-import './all.sass'
+import Footer from '../components/Footer'
+import './all.scss'
 import styled from 'styled-components'
 
 const Main = styled.div`
@@ -28,6 +29,7 @@ const TemplateWrapper = ({ children }) => (
         <Helmet>
           <html lang="en" />
           <title>{data.site.siteMetadata.title}</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
           <meta name="description" content={data.site.siteMetadata.description} />
           
           <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
@@ -44,6 +46,7 @@ const TemplateWrapper = ({ children }) => (
         </Helmet>
         <Navbar />
         <Main>{children}</Main>
+        <Footer />
       </div>
     )}
   />
