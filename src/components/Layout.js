@@ -10,6 +10,7 @@ import styled from 'styled-components'
 
 const Main = styled.div`
   background-color: #edeef1;
+  padding: 10px 0 30px;
 `
 
 const TemplateWrapper = ({ children }) => (

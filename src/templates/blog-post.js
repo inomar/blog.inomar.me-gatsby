@@ -5,6 +5,14 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import styled from 'styled-components'
+
+const Tag = styled.span`
+    background-color: #01579b;
+    padding: 5px 10px;
+    color: #FFF;
+    font-size: 0.8rem;
+`
 
 export const BlogPostTemplate = ({
   content,
@@ -13,33 +21,31 @@ export const BlogPostTemplate = ({
   tags,
   title,
   helmet,
+  date,
 }) => {
   const PostContent = contentComponent || Content
 
   return (
     <section className="section">
       {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
+      <div className="uk-container uk-container-small">
+        <div className="uk-card uk-card-default uk-card-body uk-margin-top">
+        <h1>{title}</h1>
+        <time>{date}</time>
+        <p>{description}</p>
+        <PostContent content={content} />
+        {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
                 <h4>Tags</h4>
                 <ul className="taglist">
                   {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
+                      <Link key={tag + `tag`} to={`/tags/${kebabCase(tag)}/`} className="uk-margin-left">
+                        <Tag>{tag}</Tag>
+                      </Link>
                   ))}
                 </ul>
               </div>
             ) : null}
-          </div>
         </div>
       </div>
     </section>
@@ -73,6 +79,7 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        date={post.frontmatter.date}
       />
     </Layout>
   )
@@ -92,7 +99,7 @@ export const pageQuery = graphql`
       id
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY.MM.DD")
         title
         description
         tags

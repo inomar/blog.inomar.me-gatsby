@@ -42,11 +42,11 @@ const Navbar = class extends React.Component {
             <div className="uk-navbar-center">
                 <NavList className="uk-navbar-nav uk-margin-top ">
                     <li><Link to="/" >Home</Link></li>
-                    <li><Link to="/" className="">TECH LOG</Link></li>
-                    <li><Link to="/" className="">BOOKS</Link></li>
-                    <li><Link to="/" className="">OTHERS</Link></li>
-                    <li><Link to="/" className="">ARCHIVES</Link></li>
-                    <li><Link to="/" className="">ABOUT</Link></li>
+                    <li><Link to="/tags/tech-log/" className="">TECH LOG</Link></li>
+                    <li><Link to="/tags/books/" className="">BOOKS</Link></li>
+                    <li><Link to="/tags/others/" className="">OTHERS</Link></li>
+                    <li><Link to="/tags/archives/" className="">ARCHIVES</Link></li>
+                    <li><Link to="/about/" className="">ABOUT</Link></li>
                 </NavList>
             </div>
         </nav>
