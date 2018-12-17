@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import UIkit from 'uikit'
-import Icons from 'uikit/dist/js/uikit-icons'
 import Logo from '../img/inomar_logo.png'
-UIkit.use(Icons);
+import { FaTwitter, FaGithub } from "react-icons/fa";
+
 
 const Header = styled.header`
 
@@ -35,12 +34,12 @@ const Navbar = class extends React.Component {
       <Header className="uk-container uk-padding">
         <Title className="uk-text-center"><Link to="/"><LogoImage src={Logo} alt="不定期更新症候群"/></Link></Title>
         <div className="uk-text-center" uk-margin="true">
-          <Link to="/" uk-icon="icon: github" className="uk-margin-small-left uk-margin-small-right"></Link>
-          <Link to="/" uk-icon="icon: twitter"></Link>
+            <a href="https://github.com/inomar" className="uk-margin-small-left uk-margin-small-right" target="_blank"><FaGithub /></a>
+            <a href="https://twitter.com/macoto_chan" target="_blank"><FaTwitter /></a>
         </div>
         <nav className="uk-navbar-container uk-navbar-transparent" uk-navbar="true">
-            <div className="uk-navbar-center">
-                <NavList className="uk-navbar-nav uk-margin-top ">
+            <div className="uk-flex uk-flex-center">
+                <NavList className="uk-navbar-nav uk-margin-top">
                     <li><Link to="/" >Home</Link></li>
                     <li><Link to="/tags/tech-log/" className="">TECH LOG</Link></li>
                     <li><Link to="/tags/books/" className="">BOOKS</Link></li>
