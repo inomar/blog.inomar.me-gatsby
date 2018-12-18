@@ -34,8 +34,8 @@ const Navbar = class extends React.Component {
       <Header className="uk-container uk-padding">
         <Title className="uk-text-center"><Link to="/"><LogoImage src={Logo} alt="不定期更新症候群"/></Link></Title>
         <div className="uk-text-center" uk-margin="true">
-            <a href="https://github.com/inomar" className="uk-margin-small-left uk-margin-small-right" target="_blank"><FaGithub /></a>
-            <a href="https://twitter.com/macoto_chan" target="_blank"><FaTwitter /></a>
+            <a href="https://github.com/inomar" className="uk-margin-small-left uk-margin-small-right" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+            <a href="https://twitter.com/macoto_chan" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
         </div>
         <nav className="uk-navbar-container uk-navbar-transparent" uk-navbar="true">
             <div className="uk-flex uk-flex-center">

@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import Card from '../components/Card'
 
 class TagRoute extends React.Component {
   render() {
@@ -16,27 +17,26 @@ class TagRoute extends React.Component {
     const tag = this.props.pageContext.tag
     const title = this.props.data.site.siteMetadata.title
     const totalCount = this.props.data.allMarkdownRemark.totalCount
-    const tagHeader = `${totalCount} post${
-      totalCount === 1 ? '' : 's'
-    } tagged with “${tag}”`
+    const tagHeader = `${tag}: ${totalCount} 記事`
 
     return (
       <Layout>
         <section className="section">
           <Helmet title={`${tag} | ${title}`} />
-          <div className="container content">
-            <div className="columns">
-              <div
-                className="column is-10 is-offset-1"
-                style={{ marginBottom: '6rem' }}
-              >
-                <h3 className="title is-size-4 is-bold-light">{tagHeader}</h3>
-                <ul className="taglist">{postLinks}</ul>
-                <p>
-                  <Link to="/tags/">Browse all tags</Link>
-                </p>
-              </div>
-            </div>
+          <div className="uk-container uk-container-small">
+          <p>{tagHeader}</p>
+            {posts
+              .map(({ node: post }) => (
+                <Link className="button is-small" to={post.fields.slug} key={post.id}>
+                <Card
+                  title={post.frontmatter.title}
+                  slug={post.fields.slug}
+                  excerpt={post.excerpt}
+                  date={post.frontmatter.date}
+                  tags={post.frontmatter.tags}
+                />
+                </Link>
+            ))}
           </div>
         </section>
       </Layout>
@@ -61,11 +61,16 @@ export const tagPageQuery = graphql`
       totalCount
       edges {
         node {
+          excerpt(pruneLength: 400)
+          id
           fields {
             slug
           }
           frontmatter {
             title
+            tags
+            templateKey
+            date(formatString: "YYYY.MM.DD")
           }
         }
       }
